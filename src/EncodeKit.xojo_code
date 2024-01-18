@@ -113,6 +113,16 @@ Protected Module EncodeKit
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h1, Description = 52657475726E73207468652076657273696F6E206E756D62657220696E2053656D56657220666F726D61743A20226D616A6F722E6D696E6F722E7061746368222E
+		Protected Function Version() As String
+		  /// Returns the version number in SemVer format: "major.minor.patch".
+		  
+		  Return VERSION_MAJOR.ToString + "." + _
+		  VERSION_MINOR.ToString + "." + VERSION_PATCH.ToString
+		  
+		End Function
+	#tag EndMethod
+
 
 	#tag Note, Name = Credits
 		This is essentially a modern port of Kem Tekinay's proof-of-concept Serializer_MTC class:
@@ -226,6 +236,16 @@ Protected Module EncodeKit
 		#tag EndGetter
 		Private ZeroConstructorParamExceptions As Dictionary
 	#tag EndComputedProperty
+
+
+	#tag Constant, Name = VERSION_MAJOR, Type = Double, Dynamic = False, Default = \"1", Scope = Protected
+	#tag EndConstant
+
+	#tag Constant, Name = VERSION_MINOR, Type = Double, Dynamic = False, Default = \"0", Scope = Protected
+	#tag EndConstant
+
+	#tag Constant, Name = VERSION_PATCH, Type = Double, Dynamic = False, Default = \"0", Scope = Protected
+	#tag EndConstant
 
 
 	#tag Enum, Name = Platforms, Type = Integer, Flags = &h21
