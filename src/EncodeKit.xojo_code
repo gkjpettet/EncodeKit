@@ -68,13 +68,6 @@ Protected Module EncodeKit
 		  /// Classes must be registered ahead of time because there is no way to get type info at runtime
 		  /// from a string so we need to declare in advance.
 		  
-		  // We don't support WeakRef properties so assert that this class has none.
-		  For Each prop As Introspection.PropertyInfo In ti.GetProperties
-		    If prop.PropertyType.FullName = "WeakRef" Then
-		      Raise New InvalidArgumentException("Cannot encode classes with WeakRef properties (" + ti.FullName + "." + prop.Name + ")")
-		    End If
-		  Next prop
-		  
 		  // Encodable classes must have a zero parameter constructor unless they are a special case.
 		  If Not ti.HasConstructorWithParameterCount(0) And Not ZeroConstructorParamExceptions.HasKey(ti.FullName) Then
 		    Raise New InvalidArgumentException("Cannot encode classes which do not have a zero parameter constructor (" + ti.FullName + ").")
@@ -142,9 +135,7 @@ Protected Module EncodeKit
 	#tag EndNote
 
 	#tag Note, Name = Limitations
-		1. Cannot encode classes with WeakRef properties
-		
-		2. Custom classes to be encoded must have a zero-parameter constructor. This does not have
+		1. Custom classes to be encoded must have a zero-parameter constructor. This does not have
 		to be a public constructor. This is needed so the decoder can create a "blank" instance of that
 		class before using introspection to set its properties.
 		
@@ -241,7 +232,7 @@ Protected Module EncodeKit
 	#tag Constant, Name = VERSION_MAJOR, Type = Double, Dynamic = False, Default = \"1", Scope = Protected
 	#tag EndConstant
 
-	#tag Constant, Name = VERSION_MINOR, Type = Double, Dynamic = False, Default = \"0", Scope = Protected
+	#tag Constant, Name = VERSION_MINOR, Type = Double, Dynamic = False, Default = \"1", Scope = Protected
 	#tag EndConstant
 
 	#tag Constant, Name = VERSION_PATCH, Type = Double, Dynamic = False, Default = \"0", Scope = Protected

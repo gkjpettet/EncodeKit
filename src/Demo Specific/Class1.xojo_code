@@ -60,6 +60,10 @@ Protected Class Class1
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
+		Parent As WeakRef
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
 		StringArray() As String
 	#tag EndProperty
 

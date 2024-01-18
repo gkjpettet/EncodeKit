@@ -227,6 +227,11 @@ Protected Class JSONEncoder
 		      Continue For prop
 		    End If
 		    
+		    If prop.PropertyType.Name = "WeakRef" Then
+		      // Don't restore weak references as they will always be invalid when decoding.
+		      Continue For prop
+		    End If
+		    
 		    If prop.IsComputed And Not IncludeComputed Then
 		      Continue For prop
 		    End If
@@ -389,6 +394,38 @@ Protected Class JSONEncoder
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Compact"
+			Visible=false
+			Group="Behavior"
+			InitialValue="True"
+			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="IncludeComputed"
+			Visible=false
+			Group="Behavior"
+			InitialValue="True"
+			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="IncludePrivate"
+			Visible=false
+			Group="Behavior"
+			InitialValue="True"
+			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="IncludeProtected"
+			Visible=false
+			Group="Behavior"
+			InitialValue="True"
+			Type="Boolean"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior
