@@ -218,7 +218,6 @@ Protected Class JSONDecoder
 		  
 		  // Special case: FolderItems.
 		  If type = "FolderItem" Then
-		    #Pragma Warning "TODO: Handle different platform paths"
 		    r = New FolderItem(propertiesDict.Value("NativePath"), FolderItem.PathModes.Native)
 		    Return r
 		  End If

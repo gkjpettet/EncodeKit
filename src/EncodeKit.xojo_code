@@ -135,7 +135,7 @@ Protected Module EncodeKit
 	#tag EndNote
 
 	#tag Note, Name = Limitations
-		1. Custom classes to be encoded must have a zero-parameter constructor. This does not have
+		Custom classes to be encoded must have a zero-parameter constructor. This does not have
 		to be a public constructor. This is needed so the decoder can create a "blank" instance of that
 		class before using introspection to set its properties.
 		
@@ -147,8 +147,8 @@ Protected Module EncodeKit
 		There is no need to register Xojo primitives or other common built-in classes such as
 		Dictionary, FolderItem and JSONItem as they are handled internally.
 		
-		To register a class called MyClass (best done in `App.Opening()` but must be done 
-		before any encoding takes place):
+		The below example shows how to register a class called MyClass. This is best done 
+		in `App.Opening()` but must be done before any encoding takes place:
 		
 		```xojo
 		EncodeKit.RegisterClass GetTypeInfo(MyClass)
